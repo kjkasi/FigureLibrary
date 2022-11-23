@@ -13,12 +13,12 @@ namespace Figure.Library
         }
     }
 
-    abstract class Shape
+    public abstract class Shape
     {
         public abstract double Area();
     }
 
-    class Circle : Shape
+    public class Circle : Shape
     {
         private double _radius;
 
@@ -49,7 +49,7 @@ namespace Figure.Library
         }
     }
 
-    class Triangle : Shape
+    public class Triangle : Shape
     {
         private double _sideA;
         private double _sideB;
@@ -99,6 +99,17 @@ namespace Figure.Library
             this.C = sideC;
         }
 
+        public bool IsRight()
+        {
+            double A2 = Math.Pow(A, 2);
+            double B2 = Math.Pow(B, 2);
+            double C2 = Math.Pow(C, 2);
+            if ((C2 == A2 + B2) || (A2 == B2 + C2) || (B2 == A2 + C2))
+                return true;
+            else
+                return false;
+        }
+
         public override double Area()
         {
             double p = (1.0 / 2.0) * (_sideA + _sideB + _sideC);
@@ -142,6 +153,12 @@ namespace Figure.Library
                 Console.WriteLine($"Некорректное значение: {ex.Value}");
                 return double.NaN;
             }
+        }
+
+        public static bool TrangleIsRight(double sideA, double sideB, double sideC)
+        {
+            Triangle triangle = new(sideA, sideB, sideC);
+            return triangle.IsRight();
         }
 
     }
