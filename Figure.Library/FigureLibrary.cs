@@ -13,12 +13,12 @@ namespace Figure.Library
         }
     }
 
-    public abstract class Shape
+    abstract class Shape
     {
         public abstract double Area();
     }
 
-    public class Circle : Shape
+    class Circle : Shape
     {
         private double _radius;
 
@@ -49,7 +49,7 @@ namespace Figure.Library
         }
     }
 
-    public class Triangle : Shape
+    class Triangle : Shape
     {
         private double _sideA;
         private double _sideB;
